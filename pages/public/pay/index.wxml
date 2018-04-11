@@ -1,0 +1,45 @@
+<!--pages/public/pay/index.wxml-->
+<view class='container'>
+  <view class='header-top'>
+    
+  </view>
+  <view class='voucher'>E派账户余额:{{userinfo.voucher}}元</view>
+  <view class='content'>
+    <view class='recharge-row'>
+     <view class='recharge-title'>支付金额:</view> 
+      <input class="inputText" placeholder="请输入充值金额" bindinput="priceInput" value='{{price_value}}'/>
+    </view>
+    <view class='recharge-choose'>
+      <view class="choose-one {{status == 100? 'active':''}}"  bindtap='choose' data-v="100" >
+        <view class='real-money'>充100元</view>
+        <view class='giveAway-money'>送20元</view>
+      </view>
+      <view class="choose-one {{status == 200? 'active':''}}" bindtap='choose' data-v="200">
+        <view class='real-money'>充200元</view>
+        <view class='giveAway-money'>送40元</view>
+      </view>
+      <view class="choose-one {{status == 500? 'active':''}}" bindtap='choose' data-v="500">
+        <view class='real-money'>充500元</view>
+        <view class='giveAway-money'>送100元</view>
+      </view>
+      <view class="choose-one {{status == 1000? 'active':''}}" bindtap='choose' data-v="1000">
+        <view class='real-money'>充1000元</view>
+        <view class='giveAway-money'>送200元</view>
+      </view>
+    </view>
+    <view class='WeChat'>
+      <view class='row-1'>
+        <view class='row-img'>
+          <image src='{{wximg}}' class='wximg'></image>
+        </view>
+        <view>微信</view>
+      </view>
+      <view class='row-2'>
+        <image src='{{iconimg}}' class='iconimg'></image>
+      </view>
+    </view>
+    <view class='btn-line'>
+      <view class="payBtn" disabled="{{disabled}}" bindtap="pay">微信支付</view>
+    </view>
+  </view>
+</view>

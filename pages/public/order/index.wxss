@@ -1,0 +1,177 @@
+/* pages/public/order/index.wxss */
+
+page {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  background: #f0f0f0;
+  font-family: "微软雅黑";
+  box-sizing: border-box 
+}
+
+.comm {
+  background: #fff;
+}
+
+.title {
+  position:fixed;
+  left:0px;
+  top:0px;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 10px;
+  display: flex;
+}
+.titles{
+  width: 50%;
+  display: flex;
+  justify-content:center;
+}
+.span{
+  height: 49px;
+  width: 40%
+}
+.active{
+  border-bottom: 1px solid #f60;
+  color: #f60;
+}
+.line{
+  height: 50px;
+  margin-bottom:10px;
+}
+.content {
+  width: 100%;
+  height: auto;
+}
+
+.order_head {
+  height: 35px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.order_head, .order_good {
+  display: flex;
+  justify-content: space-around;
+  font-size: 12px;
+}
+
+.order_head_id, .order_head_time {
+  width: -1%;
+  height: 35px;
+  line-height: 35px;
+}
+
+.order_head_time {
+  text-align: right;
+}
+
+.order_good {
+  height: 100px;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.good_info {
+  width: 75%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.good_img {
+  width: 30%;
+}
+
+.goods_img {
+  width: 100%;
+  height: 100%;
+}
+
+.good_title {
+  width: 65%;
+  height: 100%;
+  font-size: 13px;
+}
+
+.good_titl {
+  height: 70%;
+  line-height: 40px;
+}
+
+.good_pice {
+  color: red;
+}
+
+.good_num {
+  width: 5%;
+  height: 80px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.order_save {
+  height: 50px;
+  display: flex;
+  align-items:center;
+  justify-content:flex-end;
+}
+
+.order_btn {
+  width: 40%;
+  height: 32px;
+  margin-right: 20px;
+  display: flex;
+  justify-content:space-between;
+}
+.btns{
+  border: 1px solid #BBBBBB;
+  height: 100%;
+  text-align: center;
+ 
+}
+.btn_expree{
+  width: 60%;
+  line-height: 32px;
+}
+.btn_more{
+  display:table-cell;
+  vertical-align:middle;
+  width: 30%;
+}
+.quarantine{
+  height: 10px;
+  background: #f0f0f0;
+}
+.footer {
+  margin-top: 10px;
+  height: 100px;
+}
+/* 弹框 */
+.express{
+  border-bottom:1px solid #f0f0f0;
+  height: 40px;
+  line-height: 40px;
+}
+.express_num{
+  display: flex;
+  justify-content:space-between;
+}
+.express_ch{
+  display: flex;
+}
+.express_address{
+  font-size: 12px;
+}
+.express_goods_num{
+  width: 40%;
+}
+.radio-group{
+  margin-left:30px;
+}

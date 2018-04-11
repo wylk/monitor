@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/public/login/index",
+    "pages/public/order/index",
+    "pages/public/pay/index"
+  ],
+  "window": {
+    "backgroundColor": "#ffffff",
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "加载中..."
+  },
+  "debug": false
+}

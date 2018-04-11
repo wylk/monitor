@@ -1,0 +1,103 @@
+<loading hidden="{{show}}">正在加载</loading>
+<view class="container" wx:if="{{show}}">
+  <view class='comm title'>
+    <view class='titles titles_s' bindtap='btnStatus' data-status='2'>
+      <view class="span span-2 {{status == '2' ? 'active' : ''}}">待发货</view>
+    </view>
+    <view class='titles tieles_d' bindtap='btnStatus' data-status='3'>
+      <view class="span span-2 {{status == '3' ? 'active' : ''}}">已发货</view>
+    </view>
+  </view>
+  <view class='line'>
+  </view>
+  <!-- 订单 -->
+  <view class='comm content' wx:for="{{orders}}">
+    <!--订单号-->
+    <view class='order_head'>
+      <view class='order_head_id'> 订单号：WJ{{item.order_no}}</view>
+      <view class='order_head_time'>成交时间：{{item.add_time}}</view>
+    </view>
+    <!-- 订单商品 -->
+    <block wx:for="{{item.products}}">
+      <view class='order_good'>
+        <view class='good_info'>
+          <view class='good_img'>
+            <image src='{{item.image}}' class='goods_img'></image>
+          </view>
+          <wxs module="filters" src="../../addmul.wxs"></wxs>
+          <view class='good_title'>
+            <view class='good_titl'>{{filters.substr(item.name)}}</view>
+            <view class='good_pice'>¥{{item.pro_price}}</view>
+          </view>
+        </view>
+        <view class='good_num'>
+          <view>X{{item.pro_num}}</view>
+        </view>
+      </view>
+    </block>
+    <!-- 订单操作 -->
+    <view class='order_save'>
+      <view class='order_btn'>
+        <block wx:if="{{status == 2}}">
+          <view class='btns btn_expree' bindtap='express' data-order_id="{{item.order_id}}">发货</view>
+        </block>
+        <block wx:if="{{status == 3}}">
+          <view class='btns btn_expree' data-order_id="{{item.order_id}}">已发货</view>
+        </block>
+        <view class='btns btn_more' bindtap='order_info' data-order_id="{{item.order_id}}">...</view>
+      </view>
+    </view>
+    <!--订单 end -->
+    <view class='quarantine'></view>
+  </view>
+
+  <view class='comm footer'>
+    <view class="center" wx:if="{{empty}}">
+      <view class="empty">
+        <image class="light" src="/static/images/icon/lights-128.png"></image>
+        <view class="text-cancel">没有待处理订单</view>
+
+      </view>
+    </view>
+    <!-- <button bindtap='sendsock'>tt</button> -->
+  </view>
+  <audio src="{{src}}" id="myAudio"></audio>
+</view>
+
+<modal title="商品发货" hidden="{{showModalExpress}}" confirm-text="确定" cancel-text="取消" bindconfirm="expressBtn" bindcancel="listenerCancel">
+
+  <checkbox-group bindchange="checkboxChange">
+    <label class="checkbox" wx:for="{{express.products}}">
+      <view class='express express_num'>
+        <view>
+          <checkbox size="10" value="{{item.order_product_id}}" checked="{{1}}" />{{item.name}} </view>
+        <view class='express_goods_num'>{{item.pro_num}}</view>
+      </view>
+    </label>
+  </checkbox-group>
+
+  <view class='express'>收货人:{{express.address.name}}</view>
+  <view class='express'>电话:{{express.address.tel}}</view>
+  <view class='express'>地址:
+    <span class=" express_address">{{express.address.area+express.address.address}}</span>
+  </view>
+  <view class='express'>距离:{{express.distance}}</view>
+  <view class='express'>快递费:{{express.price}}元</view>
+  <view class='express express_ch'>收货方式:
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for-items="{{items}}">
+        <radio size="6" value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+      </label>
+    </radio-group>
+  </view>
+</modal>
+
+<modal title="订单详情" hidden="{{showModalOrderInfo}}" confirm-text="确定" cancel-text="取消" bindconfirm="listenerCancel" bindcancel="listenerCancel">
+  <view class='express'>收货人:{{express.address.name}}</view>
+  <view class='express'>电话:{{express.address.tel}}</view>
+  <view class='express'>地址:
+    <span class=" express_address">{{express.address.area+express.address.address}}</span>
+  </view>
+  <view class='express'>距离:{{express.distance}}</view>
+  <view class='express'>快递费:{{express.price}}元</view>
+</modal>

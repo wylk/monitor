@@ -1,0 +1,26 @@
+<view class="container">
+  <view class='content'>
+    <view class="login-icon">
+      <image src='/static/images/logo.png' style='width:100%;height:100%'></image>
+    </view>
+    <view class="login-from">
+      <!--账号-->
+      <view class="inputView">
+        <image class="nameImage" src="/static/images/user.png"></image>
+        <input class="inputText" placeholder="请输入账号" bindinput="phoneInput" />
+      </view>
+      <view class="line"></view>
+      <!--账号-->
+      <view class="inputView">
+        <image class="nameImage" src="/static/images/pass.png"></image>
+        <input class="inputText" password="true" placeholder="请输入密码" bindinput="passwordInput" />
+      </view>
+      <view class="line"></view>
+      <view class='loginBtnView'>
+        <view class="loginBtn" disabled="{{disabled}}" bindtap="login">登录</view>
+      </view>
+    </view>
+  </view>
+
+
+</view>
