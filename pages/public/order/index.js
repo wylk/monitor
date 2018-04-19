@@ -37,6 +37,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var store_id = t.getCache("mid").mid;
+    if (!store_id){
+      wx.navigateTo({
+        url: "/pages/public/login/index" 
+      })
+    }
     var tt = this;
     tt.redSock();
     wx.onSocketError(function (res) {

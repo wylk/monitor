@@ -7,13 +7,13 @@
       <!--账号-->
       <view class="inputView">
         <image class="nameImage" src="/static/images/user.png"></image>
-        <input class="inputText" placeholder="请输入账号" bindinput="phoneInput" />
+        <input class="inputText" cursor-spacing ='80' placeholder="请输入账号" bindinput="phoneInput" />
       </view>
       <view class="line"></view>
       <!--账号-->
       <view class="inputView">
         <image class="nameImage" src="/static/images/pass.png"></image>
-        <input class="inputText" password="true" placeholder="请输入密码" bindinput="passwordInput" />
+        <input class="inputText" cursor-spacing ='40'  password="true" placeholder="请输入密码" bindinput="passwordInput" />
       </view>
       <view class="line"></view>
       <view class='loginBtnView'>
