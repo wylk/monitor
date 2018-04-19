@@ -38,6 +38,7 @@ Page({
    */
   onLoad: function (options) {
     var store_id = t.getCache("mid").mid;
+    console.log(store_id);
     if (!store_id){
       wx.navigateTo({
         url: "/pages/public/login/index" 
@@ -239,9 +240,10 @@ Page({
             duration: 1500
           });
           setTimeout(function () {
-            wx.navigateTo({
-              url: "/pages/public/pay/index?price=" + express.price
-            })
+            // wx.navigateTo({
+            //   url: "/pages/public/pay/index?price=" + express.price
+            // })
+            tt.pay(express.price);
           },1500);
 
         } else {
@@ -250,6 +252,45 @@ Page({
 
       }
     });
+  },
+  pay: function (price) {
+    var tt = this;
+    var user = t.getCache("user");
+    var openid = t.getCache("openid");
+    var tt = this;
+    var data = {}
+    data.money = price;
+   // data.money = 0.01,
+    data.openid = openid;
+    data.mobile = user.phone;
+
+    $.post('store/expressPay', data, function (res) {
+      console.log(res);
+      if (res.error == 0) {
+        $.pay(res.payinfo, function (t) {
+          console.log(t);
+          if (t.errMsg == 'requestPayment:ok') {
+            // wx.navigateTo({
+            //   url: "/pages/public/order/index"
+            // })
+            tt.expressBtn();
+          } else {
+            $.alert(e.error);
+          }
+
+        }, function (i) {
+          console.log(i);
+          if (i.errMsg == 'requestPayment:fail cancel') {
+            $.alert('取消支付');
+          }
+
+        })
+      } else {
+        console.log(res.error);
+      }
+    });
+
+    console.log(data);
   },
   //切换商品属性
   btnStatus: function (i) {

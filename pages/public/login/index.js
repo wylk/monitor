@@ -8,6 +8,7 @@ Page({
   },
   onLoad: function (options) {
     //wx.vibrateLong()
+    this.getUserInfo();
   },
   // 获取输入账号 
   phoneInput: function (e) {
@@ -75,12 +76,29 @@ Page({
   onReachBottom: function () {
 
   },
+  getUserInfo: function () {
+    var tt = this;
+    wx.login({
+      success: function (res) {
+        $.post('public/login', { code: res.code, store_id: 1 }, function (res) {
+          //console.log(res);
+          // tt.setData({
+          //   openid: res.msg.openid
+          // })
+          t.setCache("openid", res.msg.openid, 7200);
+        });
+      },
+      fail: function (i) {
+        console.log(i);
+      }
+    })
+  },
 
   onShareAppMessage: function () {
     return {
       title: 'E派速达',
       desc: '店铺管理',
-      path: 'pages/public/coupon/index'
+      path: 'pages/public/login/index'
     }
   }
 })

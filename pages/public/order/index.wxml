@@ -70,7 +70,7 @@
     <label class="checkbox" wx:for="{{express.products}}">
       <view class='express express_num'>
         <view>
-          <checkbox size="10" value="{{item.order_product_id}}" checked="{{1}}" />{{item.name}} </view>
+          <checkbox size="10" value="{{item.order_product_id}}" checked="{{1}}" />{{filters.substr(item.name)}} </view>
         <view class='express_goods_num'>{{item.pro_num}}</view>
       </view>
     </label>
